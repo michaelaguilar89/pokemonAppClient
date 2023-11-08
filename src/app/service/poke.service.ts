@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,18 @@ import { Injectable } from '@angular/core';
 })
 export class PokeService {
 
-  constructor() { }
+  list:any[]=[];
+  pokemon:any;
+  constructor(private http:HttpClient) { }
+
+  getAllPokemon()
+  {
+    for(let i=0;i<100;i++)
+     this.pokemon=this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${i}`);
+  this.list.push(this.pokemon);
+  return this.list;
+  }
+  getPokemonDetail(id:string){
+   return this.pokemon=this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${id}`);
+  }
 }
