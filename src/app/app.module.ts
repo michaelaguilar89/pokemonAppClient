@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DetailsComponent } from './components/details/details.component';
 import { PokeService } from './service/poke.service';
 import { HeaderComponent } from './components/header/header.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,HttpClientModule
+    AppRoutingModule,HttpClientModule,FormsModule
   ],
   providers: [PokeService],
   bootstrap: [AppComponent]

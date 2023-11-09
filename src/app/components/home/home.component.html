@@ -1,29 +1,123 @@
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>mdo</td> 
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>twitter</td>
-      </tr>
-    </tbody>
-  </table>
+<div id="card" class="container text-primary col-lg-8 col-md-8 col-sm-10 mx-auto mt-3">
+
+
+ <div class="search">
+  <div class="form-floating mb-3">
+    <input type="text" [(ngModel)]="name" name="name" class="form-control" id="floatingInput" placeholder="search Pokemon">
+    <label for="floatingInput">Search</label>
+    
+  </div>
+   <div>
+    <button class="btn btn-primary btn-lg mb-4" (click)="search()">Search</button>
+   </div>
+ </div>
+
+ 
+
+
+
+  <div class="card mb-3" >
+    
+    
+  
+    <div class="conatiner mx-auto mt-5 mb-5" *ngIf="isLoadgin">
+      <div class="spinner-border text-success " role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+
+    </div>
+   
+    
+    <div class="container2" *ngIf="item">
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="3000">
+            <img [src]=item.sprites.front_default class="mx-auto d-block w-50" alt={{item.name}}>
+          </div>
+         
+          <div class="carousel-item" data-bs-interval="2000">
+            <img [src]=item.sprites.back_default class="mx-auto d-block w-50" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img [src]=item.sprites.front_shiny class="mx-auto d-block w-50" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img [src]=item.sprites.back_shiny class="mx-auto d-block w-50" alt="...">
+          </div>
+          
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" style="background-color: gray;" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next"  type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span class="carousel-control-next-icon " style="background-color: gray;" aria-hidden="true"></span>
+          <span class="visually-hidden ">Next</span>
+        </button>
+      </div>
+
+       <!--Toast-->
+      
+       <!--Toast-->
+
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">General</button>
+          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Abilities</button>
+          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Stats</button>
+       
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+          <div class="container ">
+
+
+            <ul class="list-group" >
+              <li class="list-group-item ">{{item.name |uppercase}}</li>  
+              <li class="list-group-item ">Position : {{item.id}}</li>  
+              <li class="list-group-item ">Type : {{item.types[0].type.name}}</li>  
+              <li class="list-group-item ">Weigth : {{item.weight}} </li>  <li class="list-group-item ">{{item.name |uppercase}}</li>  
+              <li class="list-group-item "> Species : {{item.species.name}} </li>  <li class="list-group-item ">{{item.name |uppercase}}</li>  
+       
+            </ul>
+            
+              
+             
+        
+          </div>
+    
+        </div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+          <div >
+            <!--Abilities-->
+              <ul class="list-group" *ngFor=" let abilitie of item.abilities">
+              <li class="list-group-item ">{{abilitie.ability.name}}</li>
+  
+            </ul>
+            
+  
+        
+          </div>
+        </div>
+  
+        </div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+          <div >
+           
+            <!--Stats-->
+           
+            <ul class="list-group" *ngFor=" let stat of item.stats">
+              <li class="list-group-item ">{{stat.stat.name}} : {{stat.base_stat}}</li>
+  
+            </ul>
+      
+          </div>
+        </div>
+
+    </div>
+                   
+            </div>
+      
+          </div>
+
