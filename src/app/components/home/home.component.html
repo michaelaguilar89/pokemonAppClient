@@ -1,4 +1,4 @@
-<div id="card" class="container text-primary col-lg-8 col-md-8 col-sm-10 mx-auto mt-3">
+<div id="card" class="container text-primary col-lg-6 col-md-8 col-sm-10 mx-auto mt-3">
 
 
  <div class="search">
@@ -8,8 +8,10 @@
     
   </div>
    <div>
-    <button class="btn btn-primary btn-lg mb-4" (click)="search()">Search</button>
-   </div>
+    <button class="btn btn-primary btn-lg mb-4" (click)="search()"
+      [disabled]="name.length==0">Search</button>
+        
+  </div>
  </div>
 
  
@@ -32,17 +34,17 @@
       <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="3000">
-            <img [src]=item.sprites.front_default class="mx-auto d-block w-50" alt={{item.name}}>
+            <img [src]=item.sprites.front_default class="mx-auto d-block w-25" alt={{item.name}}>
           </div>
          
           <div class="carousel-item" data-bs-interval="2000">
-            <img [src]=item.sprites.back_default class="mx-auto d-block w-50" alt="...">
+            <img [src]=item.sprites.back_default class="mx-auto d-block w-25" alt="...">
           </div>
           <div class="carousel-item" data-bs-interval="2000">
-            <img [src]=item.sprites.front_shiny class="mx-auto d-block w-50" alt="...">
+            <img [src]=item.sprites.front_shiny class="mx-auto d-block w-25" alt="...">
           </div>
           <div class="carousel-item" data-bs-interval="2000">
-            <img [src]=item.sprites.back_shiny class="mx-auto d-block w-50" alt="...">
+            <img [src]=item.sprites.back_shiny class="mx-auto d-block w-25" alt="...">
           </div>
           
         </div>
